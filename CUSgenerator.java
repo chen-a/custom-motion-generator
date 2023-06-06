@@ -96,12 +96,11 @@ public class CUSgenerator {
             timePerFrame = inputFile[b][9];
 
             double[][] line = new double[frames][7];
-        line[0] = new double[]{1, startingXPos, startingYPos, startingZPos, startingXRot, startingYRot, startingZRot};
-        for (int z=1; z<frames; z++) {
-            double newXPos = startingXPos + (startingVelocity * timePerFrame * z) + (0.5 * acceleration * Math.pow((timePerFrame * z), 2));
-            line[z] = new double[]{z+1, newXPos, startingYPos, startingZPos, startingXRot, startingYRot, startingZRot};
-        }
-
+            line[0] = new double[]{1, startingXPos, startingYPos, startingZPos, startingXRot, startingYRot, startingZRot};
+            for (int z=1; z<frames; z++) {
+                double newXPos = startingXPos + (startingVelocity * timePerFrame * z) + (0.5 * acceleration * Math.pow((timePerFrame * z), 2));
+                line[z] = new double[]{z+1, newXPos, startingYPos, startingZPos, startingXRot, startingYRot, startingZRot};
+            }
             try {
                 int trialNum = b+1;
                 BufferedWriter writer = new BufferedWriter(new java.io.FileWriter(folderPath + "/" + outputFileName + "-" + trialNum + ".cus"));
